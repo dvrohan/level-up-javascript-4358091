@@ -16,7 +16,28 @@
 
   <script>
     // Write your code here
+    function* getNextStop() {
+      let stops = ["Poughkeepsie", "Newburgh", "Peekskill", "Yonkers", "Bronx", "Grand Central"];
 
+      for (let stop of stops) {
+        yield stop;
+      }
+    }
+
+    const nyc = getNextStop();
+
+    function onNextButtonClick() {
+      let stop = nyc.next();
+      if (stop.done) {
+        console.log("We made it!")
+        nextStopButton.setAttribute('disabled', true)
+      }
+      else {
+        console.log(stop.value);
+      }
+    }
+    const nextStopButton = document.querySelector("#next-stop")
+    nextStopButton.addEventListener('click', onNextButtonClick);
   </script>
 </body>
 
