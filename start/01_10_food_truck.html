@@ -16,6 +16,22 @@
 
   <script>
     // Write your code here
+    function getFinalMenu(foodArray) {
+      let flatArray = foodArray.flat();
+      let combinedMenu = new Set();
+      flatArray.forEach(item => {
+        combinedMenu.add(item);
+      });
+
+      let combinedMenuDocument = document.querySelector("#combined-menu");
+      for (let item of combinedMenu) {
+        let menuListItem = document.createElement('li')
+        menuListItem.innerText = item
+        combinedMenuDocument.appendChild(menuListItem);
+      }
+    }
+
+    getFinalMenu([["Tacos", "Pizza"], ["Pizza", "Burrito"], ["Pasta", "Burger", "Coke"]]);
 
   </script>
 </body>
